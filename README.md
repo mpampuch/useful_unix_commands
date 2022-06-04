@@ -22,7 +22,9 @@ Extract sequence from fastq file given read name
 
 ## delete empty lines using awk
 `awk 'NF' file`
+
 Will turn
+
 ```
 xxxxxx
 
@@ -32,7 +34,9 @@ yyyyyy
 
 zzzzzz
 ```
+
 into
+
 ```
 xxxxxx
 yyyyyy
