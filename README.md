@@ -161,3 +161,46 @@ ls -1 | xargs readlink -f | xargs -I{} cp {} /Volumes/ubdata/mpampuch/
 ```
 
 Copies all files from the current directory into the mpampuch directory
+
+# Turn a multi-line FASTA sequence into a single-line FASTA sequence
+
+Make sure you have seqtk installed, use `seqtk seq`
+
+`seqtk seq multi-line.fasta > single-line.fasta`
+
+# Change FASTA headers by key value pair file
+
+Need the seqkit package
+```
+seqkit replace -w 0 -p "(.+)" -r '{kv}' -k kv.txt annotated_seqs_file_safe_unique.fa > annotated_seqs_metadata_unique.fa
+```
+- Flags
+	- -w = line width line width when outputing FASTA format (0 for no wrap) (default 60)
+	- -p, --pattern string = search regular expression
+	- -r, --replacement string = replacement. supporting capture variables.  e.g. $1 represents the text of the first submatch. ATTENTION: for *nix OS, use SINGLE quote NOT double quotes or use the \ escape character. Record number is also supported by "{nr}".use ${1} instead of $1 when {kv} given!*
+
+
+# Extract Sequences from GFF file 
+- Need bedtools
+- Need .GFF file, Reference.FASTA file
+
+```
+bedtools getfasta [OPTIONS] -fi <input FASTA> -bed <BED/GFF/VCF>
+
+# Example
+bedtools getfasta -s -fi Phaeodactylum_tricornutum.ASM15095v2.dna.toplevel_old_reformatted.fa -bed clean6.gff -fo anotated_seqs.fa
+```
+- Flags
+	- -s = Force strandedness. If the feature occupies the antisense strand, the sequence will be reverse complemented. *Default: strand information is ignored.*
+	- -fo = Specify an output file name. By default, output goes to stdout.
+- **bedtools substracts 1bp from the START of the sequence in the FASTA header**
+- GFF
+	- <img width="480" alt="image" src="https://user-images.githubusercontent.com/80661840/174163506-32f6dbeb-68ee-467e-9fcb-6aa0e1d2ea11.png">
+- bedtools FASTA
+	- <img width="480" alt="image" src="https://user-images.githubusercontent.com/80661840/174163447-1e443554-8fb0-43a4-b542-20b3379aeb86.png">
+
+# Apply a command to only the first file in an AWK script
+
+# Check if sequence in FASTA has pattern
+
+# Count Number of Occurances of Pattern in the sequences within FASTA files
