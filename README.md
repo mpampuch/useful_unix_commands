@@ -86,6 +86,8 @@ cd ~
 du -h ./ | grep [0-9]G
 ```
 
+## Get full file path of a file
+`readlink -f file_name`
 
 ## Extract sequence from fastq file given read name
 
@@ -148,3 +150,14 @@ eval sra=\${${list}[i]}
 fastq-dump --gzip --skip-technical --readids --read-filter pass --dumpbase --split-3 --clip --outdir /Volumes/ubdata/mpampuch/diatomicbase_data/files_sorted/transcriptomics_data/ $sra 
 done
 ```
+
+## ls -1 and xargs
+
+- Using this set up `ls -1 | xargs (some_command)`, you can perform an action on each file that is in a directory 
+- Also, `xargs -I{}` allows you to not append xargs arguments to end of command but rather wherever you put the {}
+	- for example
+```
+ls -1 | xargs readlink -f | xargs -I{} cp {} /Volumes/ubdata/mpampuch/
+```
+
+Copies all files from the current directory into the mpampuch directory
