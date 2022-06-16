@@ -1,4 +1,4 @@
-# useful_unix_commands
+# Useful Unix Commands
 
 # How to work with and free up ports
 
