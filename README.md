@@ -134,7 +134,7 @@ How does this work? Since NF stands for "number of fields", those lines being em
 # Nested parameter expansion in bash
 
 - bash doesn't do nested parameter expansion. 
-- Have to preface a parameter expansion with `eval` and `\` is what the eval command is for
+- Have to preface a parameter expansion with `eval` and `\S` is what the eval command is for
 
 ```
 eval variable=\${${var}[j]} 
