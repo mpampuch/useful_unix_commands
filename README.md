@@ -22,7 +22,6 @@ Tricks that worked I know work on Mac (https://askubuntu.com/questions/447820/ss
 ```
 lsof -ti:5901 | xargs kill -9
 # lsof -ti:5901 to find whatever is using port 5901.
-
 # Pass the whole thing to kill -9 to kill whatever was using port 5901.
 ```
 
