@@ -1,6 +1,6 @@
 # useful_unix_commands
 
-## How to work with and free up ports
+# How to work with and free up ports
 
 
 Things that I know work on Unix
@@ -26,7 +26,7 @@ lsof -ti:5901 | xargs kill -9
 # Pass the whole thing to kill -9 to kill whatever was using port 5901.
 ```
 
-## Managing Processes
+# Managing Processes
 
 - If you have a script that executes multiple commands (e.g. my `dl_mult_sras.sh` script), you can't use `top` to kill the process because it'll just kill the sub process (in this case a bunch of fastq-dump commands)
 ```
@@ -51,7 +51,7 @@ systemd(1)───bash(5936)───jupl(6058)───jupyter-lab(7011)──
 - but killing is also more complicated than just kill
 	- see https://askubuntu.com/questions/520107/how-to-kill-a-script-running-in-terminal-without-closing-terminal-ctrl-c-doe?newreg=d4336963af664502988de90ee4e5c1f7 for more details
 
-### What you should try is this in this order
+## What you should try is this in this order
 
 ```
 kill -INT -YOUR_PID_HERE 
@@ -79,7 +79,7 @@ kill -KILL -YOUR_PID_HERE
 
 
 
-## Check space used in your home directory 
+# Check space used in your home directory 
 
 ```
 cd ~
@@ -89,7 +89,7 @@ du -h ./ | grep [0-9]G
 ## Get full file path of a file
 `readlink -f file_name`
 
-## Extract sequence from fastq file given read name
+# Extract sequence from fastq file given read name
 
 ```gunzip -cd all_gac_reads.fastq.gz | awk '/read_id/{getline; print; exit}'```
 
@@ -132,7 +132,7 @@ zzzzzz
 ```
 How does this work? Since NF stands for "number of fields", those lines being empty have 0 fiedls, so that awk evaluates 0 to False and no line is printed; however, if there is at least one field, the evaluation is True and makes awk perform its default action: print the current line.
 
-## Nested parameter expansion in bash
+# Nested parameter expansion in bash
 
 - bash doesn't do nested parameter expansion. 
 - Have to preface a parameter expansion with `eval` and `\` is what the eval command is for
@@ -151,7 +151,7 @@ fastq-dump --gzip --skip-technical --readids --read-filter pass --dumpbase --spl
 done
 ```
 
-## ls -1 and xargs
+# ls -1 and xargs
 
 - Using this set up `ls -1 | xargs (some_command)`, you can perform an action on each file that is in a directory 
 - Also, `xargs -I{}` allows you to not append xargs arguments to end of command but rather wherever you put the {}
