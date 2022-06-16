@@ -107,7 +107,7 @@ du -h ./ | grep [0-9]G
 - getline just eats the line and goes on to the next.
     - So ie if you want like the 2nd line after (ie. grep -A 2 equivalent, do awk '/blah/{getline; getline; print; exit}'
 
-## delete empty lines using awk
+# delete empty lines using awk
 `awk 'NF' file`
 
 Will turn
