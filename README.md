@@ -86,7 +86,7 @@ cd ~
 du -h ./ | grep [0-9]G
 ```
 
-## Get full file path of a file
+# Get full file path of a file
 `readlink -f file_name`
 
 # Extract sequence from fastq file given read name
