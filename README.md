@@ -200,6 +200,17 @@ bedtools getfasta -s -fi Phaeodactylum_tricornutum.ASM15095v2.dna.toplevel_old_r
 
 # Apply a command to only the first file in an AWK script
 
+- use `'NR==FNR {action; next} {action on file2}' file1 file2`  
+
+- Explaination
+	- FNR refers to the record number (typically the line number) in the current file,
+	- NR refers to the total record number.
+	- The operator == is a comparison operator, which returns true when the two surrounding operands are equal.
+		- This means that the condition NR==FNR is only true for the first file, as FNR resets back to 1 for the first line of each file but NR keeps on increasing.
+		- This pattern is typically used to perform actions on only the first file.
+
+The next inside the block means any further commands are skipped, so they are only run on files other than the first.
+
 # Check if sequence in FASTA has pattern
 
 # Count Number of Occurances of Pattern in the sequences within FASTA files
