@@ -202,7 +202,7 @@ bedtools getfasta -s -fi Phaeodactylum_tricornutum.ASM15095v2.dna.toplevel_old_r
 
 - use `'NR==FNR {action; next} {action on file2}' file1 file2`  
 
-- Explaination
+- Explaination (https://stackoverflow.com/questions/32481877/what-are-nr-and-fnr-and-what-does-nr-fnr-imply)
 	- FNR refers to the record number (typically the line number) in the current file,
 	- NR refers to the total record number.
 	- The operator == is a comparison operator, which returns true when the two surrounding operands are equal.
