@@ -161,6 +161,89 @@ ls -1 | xargs readlink -f | xargs -I{} cp {} /Volumes/ubdata/mpampuch/
 
 Copies all files from the current directory into the mpampuch directory
 
+- Another good example is to copy a lot of directories into all sub directories
+- ie.
+```console 
+# Original directory structure
+
+# Final directory strucutre
+(mark) mpampuch@agrajag:/Volumes/ubdata/mpampuch/REMAPPING_P
+IPELINE/test_from_start_to_finish/sequence_length_check/feat
+ure_folders$ ls -1 | xargs readlink -f | xargs -I{} cp -r ..
+/failed_length_check/ ../passed_length_check/ {}
+(mark) mpampuch@agrajag:/Volumes/ubdata/mpampuch/REMAPPING_P
+IPELINE/test_from_start_to_finish/sequence_length_check$ rm 
+-r passed_length_check/ feature_folders/ failed_length_check
+(mark) mpampuch@agrajag:.$ tree
+.
+├── cds
+│   ├── failed_length_check
+│   └── passed_length_check
+├── chromosomes
+│   ├── failed_length_check
+│   └── passed_length_check
+├── direct_repeats
+│   ├── failed_length_check
+│   └── passed_length_check
+├── exons
+│   ├── failed_length_check
+│   └── passed_length_check
+├── five_prime_utrs
+│   ├── failed_length_check
+│   └── passed_length_check
+├── genes
+│   ├── failed_length_check
+│   └── passed_length_check
+├── introns
+│   ├── failed_length_check
+│   └── passed_length_check
+├── lnc_rnas
+│   ├── failed_length_check
+│   └── passed_length_check
+├── mrnas
+│   ├── failed_length_check
+│   └── passed_length_check
+├── nc_rna_genes
+│   ├── failed_length_check
+│   └── passed_length_check
+├── nc_rnas
+│   ├── failed_length_check
+│   └── passed_length_check
+├── pseudogenes
+│   ├── failed_length_check
+│   └── passed_length_check
+├── pseudogenic_transcripts
+│   ├── failed_length_check
+│   └── passed_length_check
+├── regions
+│   ├── failed_length_check
+│   └── passed_length_check
+├── repeat_regions
+│   ├── failed_length_check
+│   └── passed_length_check
+├── rnas
+│   ├── failed_length_check
+│   └── passed_length_check
+├── sequence_features
+│   ├── failed_length_check
+│   └── passed_length_check
+├── sno_rnas
+│   ├── failed_length_check
+│   └── passed_length_check
+├── sn_rnas
+│   ├── failed_length_check
+│   └── passed_length_check
+├── supercontigs
+│   ├── failed_length_check
+│   └── passed_length_check
+├── three_prime_utrs
+│   ├── failed_length_check
+│   └── passed_length_check
+└── trnas
+    ├── failed_length_check
+    └── passed_length_check
+```
+
 # Turn a multi-line FASTA sequence into a single-line FASTA sequence
 
 Make sure you have seqtk installed, use `seqtk seq`
