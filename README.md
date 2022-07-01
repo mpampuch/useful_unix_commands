@@ -85,6 +85,11 @@ cd ~
 du -h ./ | grep [0-9]G
 ```
 
+# Get command histroy without the numbers
+```
+history | awk '{$1="";print substr($0,2)}'
+```
+
 # Get full file path of a file
 `readlink -f file_name`
 
