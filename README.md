@@ -93,6 +93,17 @@ history | awk '{$1="";print substr($0,2)}'
 # Get full file path of a file
 `readlink -f file_name`
 
+# monitor a file that is updating
+```bash
+tail -f updating_file
+# exit with ctrl + C
+
+# works well with nohup
+# ie
+nohup ./final_blast_update.sh features_list.txt > final_blast_update.log 2> final_blast_update.errlog &
+tail -f final_blast_update.log
+```
+
 # Extract sequence from fastq file given read name
 
 ```gunzip -cd all_gac_reads.fastq.gz | awk '/read_id/{getline; print; exit}'```
