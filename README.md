@@ -147,6 +147,15 @@ zzzzzz
 ```
 How does this work? Since NF stands for "number of fields", those lines being empty have 0 fiedls, so that awk evaluates 0 to False and no line is printed; however, if there is at least one field, the evaluation is True and makes awk perform its default action: print the current line.
 
+# Call a shell within a shell
+- use `sh -c`
+```bash
+# e.g.
+ls -1 *WITH* | xargs -I{} sh -c "awk '{print NF}' {} | sort | uniq"
+```
+<img width="1049" alt="image" src="https://user-images.githubusercontent.com/80661840/177076691-0b05cffb-ef5b-4729-a16e-3c9496980ed2.png">
+
+
 # Nested parameter expansion in bash
 
 - bash doesn't do nested parameter expansion. 
