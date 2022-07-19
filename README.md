@@ -151,9 +151,9 @@ How does this work? Since NF stands for "number of fields", those lines being em
 - use `sh -c`
 ```bash
 # e.g.
-ls -1 *WITH* | xargs -I{} sh -c "awk '{print NF}' {} | sort | uniq"
+ls -1 *POST* | xargs -I{} sh -c "awk '{print NF \" \" FILENAME}' {}| sort | uniq"
 ```
-<img width="1049" alt="image" src="https://user-images.githubusercontent.com/80661840/177076691-0b05cffb-ef5b-4729-a16e-3c9496980ed2.png">
+<img width="645" alt="image" src="https://user-images.githubusercontent.com/80661840/179791992-34ce42b8-5345-402e-8819-1b8853b29c3e.png">
 
 
 # Nested parameter expansion in bash
