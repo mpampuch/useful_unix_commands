@@ -150,7 +150,7 @@ How does this work? Since NF stands for "number of fields", those lines being em
 # Call a shell within a shell
 - use `sh -c`
 ```bash
-# e.g.
+# e.g. This is useful for checking the number of columns in your tables across multiple files at once
 ls -1 *POST* | xargs -I{} sh -c "awk '{print NF \" \" FILENAME}' {}| sort | uniq"
 ```
 <img width="645" alt="image" src="https://user-images.githubusercontent.com/80661840/179791992-34ce42b8-5345-402e-8819-1b8853b29c3e.png">
