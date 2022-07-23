@@ -155,6 +155,15 @@ ls -1 *POST* | xargs -I{} sh -c "awk '{print NF \" \" FILENAME}' {}| sort | uniq
 ```
 <img width="645" alt="image" src="https://user-images.githubusercontent.com/80661840/179791992-34ce42b8-5345-402e-8819-1b8853b29c3e.png">
 
+# Grab multiple stout's while using subshells and edit a desired one while using xargs
+- Use `xargs -I` and use different symbols to grab and store information throughout your command (i.e. `xargs -I{}` and `xargs -I%`)
+- To act upon the stout of the first one, use `echo` in the subshell
+- e.g. I used this trick to rename multiple files with the `sed` command. `sed` needs to act on the stout of the first command which was `ls -1`. I couldn't do `xargs -I{} sh -c "sed 's/txt_2_change/new_txt/g' {}"` because that would perform sed on the contents **inside** the file, not on the filename itself (in this case stout of ls -1). `xargs -I{} sh -c "echo'{}' | sed 's/txt_2_change/new_txt/g'"` enabled this to work
+- Final command was 
+```bash 
+ls -1 *WITH* | xargs -I{} sh -c "echo '{}' | sed 's/\.blast/PRE_INDEXING_FIX_BOTH_PLUS_AND_MINUS\.blast/g' | xargs -I% mv {} %"
+```
+
 
 # Nested parameter expansion in bash
 
